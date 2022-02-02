@@ -23,3 +23,14 @@
     border: none;
 }
 
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F6F7F8;
+}
+
+.list-group-item {
+    color: #000000;
+    text-decoration: none;
+}
