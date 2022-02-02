@@ -108,3 +108,93 @@ const anotherOne = [
         choices: ['Engineer', 'Intern', 'Done']
     }
 ]
+
+//starting function - begins with manager because each team will always have a manager 
+function init() {
+    //starts with the manager function
+    managerPromt();
+}
+
+
+//function that will promt the user to select the next type of employee they are adding 
+function next() {
+inquirer.prompt(anotherOne).then((response) => {
+    
+    console.log(response);
+    switch (response.nextEmployee) {
+        case 'Engineer':
+            engineerPromt();
+            break;
+        case 'Intern':
+            internPromt();
+            break;
+        case 'Done':
+            console.log('Creating your team!')
+            makeTeam();
+    }
+})
+}
+//function for the manager questions that will be called first when initiated
+function managerPromt() {
+inquirer.prompt(managerQuestions).then((response) => {
+
+    let name = response.managerName;
+    let id = response.managerID;
+    let email = response.managerEmail;
+    let office = response.office;
+     
+    const manager = new Manager(name, id, email, office);
+    //pushes the new manager object to the empty array to be used later 
+    teamArray.push(manager);
+    //this will call the next function which will prompt the user to select the next type of employee they are adding 
+    console.log(teamArray);
+
+    next();
+})
+}
+
+function engineerPromt() {
+inquirer.prompt(engineerQuestions).then((response) => {
+
+    let name = response. engiName;
+    let id = response.engiID;
+    let email = response.engiEmail;
+    let github = response.github;
+    
+    const engineer = new Engineer (name, id, email, github);
+
+    teamArray.push(engineer);
+    console.log(teamArray);
+ 
+    next();
+})
+}
+
+function internPromt() {
+inquirer.prompt(internQuestions).then((response) => {
+
+    let name = response. internName;
+    let id = response.internID;
+    let email = response.internEmail;
+    let school = response.school;
+
+    const intern = new Intern (name, id, email, school);
+
+    teamArray.push(intern);
+    console.log(teamArray);
+
+    next();
+})
+}
+
+//function to make the file
+function makeTeam() {
+fs.writeFile(outputPath, render(teamArray), function(err) {
+if (err) { 
+return console.log(err)
+}
+})
+
+}
+
+init();
