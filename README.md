@@ -28,3 +28,6 @@ THEN I am prompted to enter the intern’s name, ID, email, and school, and I am
 WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 ```
+<img width="1440" alt="Team Screen Shot " src="https://user-images.githubusercontent.com/85650009/152155722-a460c0e7-40db-4c4a-b9f4-08e45c2f8cc6.png">
+
+https://watch.screencastify.com/v/XwP4NhcCIgAJaWYNTZ6v 
